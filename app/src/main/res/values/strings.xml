@@ -7,9 +7,13 @@
 
     <!--Student Fragments-->
     <string name="student_fragment_info">This is for students</string>
+    <string name="student_fragment_course">course</string>
+    <string name="student_fragment_Exams">Exams</string>
+
 
     <!--Teachers Fragments-->
     <string name="teachers_fragment_info">This is for teachers</string>
-
+    <string name="teachers_fragment_Attendence">Attendence</string>
+    <string name="teachers_fragment_CIE">CIE</string>
 
 </resources>
