@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Fragments</string>
+
+    <!--Main Activity-->
+    <string name="studentbutton">Students</string>
+    <string name="techertbutton">Teachers</string>
+
+    <!--Student Fragments-->
+    <string name="student_fragment_info">This is for students</string>
+
+    <!--Teachers Fragments-->
+    <string name="teachers_fragment_info">This is for teachers</string>
+
+
 </resources>
