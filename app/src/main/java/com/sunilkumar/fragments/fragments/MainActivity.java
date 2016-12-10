@@ -1,5 +1,6 @@
 package com.sunilkumar.fragments.fragments;
 
+import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -24,22 +25,17 @@ public class MainActivity extends AppCompatActivity {
         teachersButton = (Button) findViewById(R.id.teacherButton);
         fragment_container = (RelativeLayout)findViewById(R.id.fragment_container);
 
-        //Default fragment when application launches
-        FragmentManager fragmentManager = getFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        Students_Fragment studentsfragment = new Students_Fragment();
-        fragmentTransaction.replace(R.id.fragment_container,studentsfragment);
-        fragmentTransaction.commit();
+        //Make student fragment to appear when application is launched
+        switchFragments(1);
 
         //Change the fragment to student when clicked
         studentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                Students_Fragment studentsfragment = new Students_Fragment();
-                fragmentTransaction.replace(R.id.fragment_container,studentsfragment);
-                fragmentTransaction.commit();
+                //Pass 1 to indicate student called this fragment
+                switchFragments(1);
+
+
             }
         });
 
@@ -47,13 +43,23 @@ public class MainActivity extends AppCompatActivity {
         teachersButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                Teachers_Fragments teachersfragments = new Teachers_Fragments();
-                fragmentTransaction.replace(R.id.fragment_container,teachersfragments);
-                fragmentTransaction.commit();
+                //Pass 2 to indicate teacher called this fragment
+                switchFragments(2);
             }
         });
+    }
 
+    public void switchFragments(int i){
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        Fragment output = null;
+        if(i == 1){
+            output = new Students_Fragment();
+
+        }else {
+            output = new Teachers_Fragments();
+        }
+        fragmentTransaction.replace(R.id.fragment_container,output);
+        fragmentTransaction.commit();
     }
 }
