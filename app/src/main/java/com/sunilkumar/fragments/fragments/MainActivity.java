@@ -24,9 +24,14 @@ public class MainActivity extends AppCompatActivity {
         teachersButton = (Button) findViewById(R.id.teacherButton);
         fragment_container = (RelativeLayout)findViewById(R.id.fragment_container);
 
-        //Fragment manager references
+        //Default fragment when application launches
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        Students_Fragment studentsfragment = new Students_Fragment();
+        fragmentTransaction.replace(R.id.fragment_container,studentsfragment);
+        fragmentTransaction.commit();
 
-
+        //Change the fragment to student when clicked
         studentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -38,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Change the fragment to teacher when clicked
         teachersButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
